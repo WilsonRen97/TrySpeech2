@@ -53,9 +53,6 @@ public class PaintView extends View {
                 brush.setAntiAlias(true);
                 brush.setColor(currentColor);
                 brush.setStyle(Paint.Style.STROKE);
-                // brush.setStyle(Paint.Style.FILL_AND_STROKE);
-                // brush.setStyle(Paint.Style.FILL);
-                brush.setStrokeJoin(Paint.Join.ROUND);
                 if (MainActivity.EraserMode) {
                     brush.setStrokeWidth(40f);
                 } else {
@@ -65,10 +62,6 @@ public class PaintView extends View {
                 allStrokes.add(new Stroke(path, brush));
                 postInvalidate();
                 return true;
-            case MotionEvent.ACTION_UP:
-                path = allStrokes.get(allStrokes.size() - 1).getPath();
-                allStrokes.get(allStrokes.size() - 1).getPaint().setStyle(Paint.Style.FILL);
-                path.close();
             case MotionEvent.ACTION_MOVE:
                 path = allStrokes.get(allStrokes.size() - 1).getPath();
                 path.lineTo(pointX, pointY);
